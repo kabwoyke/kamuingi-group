@@ -76,8 +76,19 @@ class AuthController extends Controller
 
         Auth::attempt($validatedUser);
 
-        return view('admin.dashboard');
+        return redirect("/admin");
 
 
+    }
+
+    public function logout(Request $request){
+
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect("/auth/login");
     }
 }
