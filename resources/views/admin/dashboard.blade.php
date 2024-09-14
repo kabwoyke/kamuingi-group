@@ -20,14 +20,30 @@
                     <ion-icon name="home-outline"></ion-icon>
                     Home
                 </a></li>
-                <li><a href="" class="nav-link">
-                    <ion-icon name="people-outline"></ion-icon>
-                    Members
-                </a></li>
                 <li>
+                <a href="" class="nav-link">
+                    <span class="nav--link--inner">
+                        <div class="nav--link--inner-content">
+                            <ion-icon name="people-outline"></ion-icon>
+                            Members
+                        </div>
+
+                        <ion-icon  name="chevron-down-outline"></ion-icon>
+                    </span>
+
+
+                </a>
+            </li>
+                <li>
+
                     <a href="" class="nav-link">
-                    <ion-icon name="cash-outline"></ion-icon>
-                    Donation
+                        <span class="nav--link--inner">
+                            <div class="nav--link--inner-content">
+                                <ion-icon name="cash-outline"></ion-icon>
+                                Donation
+                            </div>
+                        </span>
+
                 </a></li>
                 <div class="bottom-links">
                     <li >
@@ -97,20 +113,20 @@
             </div>
         </div>
 
-
-        <livewire:members/>
-
+       <livewire:member-data-table/>
     </main>
 </div>
 
 
 
-@push('styles')
-
-@vite('resources/css/dashboard.css')
-@vite(['resources/css/app.css' , 'resources/js/app.js'])
-
+@push('scripts')
+ @vite(['resources/js/app.js'])
 @endpush
+
+@push('styles')
+@vite('resources/css/dashboard.css')
+@endpush
+
 @endsection
 
 {{-- <h1>{{Auth()->user()}}</h1> --}}

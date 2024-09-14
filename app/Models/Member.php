@@ -17,4 +17,10 @@ class Member extends Model
         'status',
         'total_missed_donation'
     ];
+
+    public function scopeSearch($query , $value){
+        $query->where('first_name' , 'like' ,"%{$value}%")
+                ->orWhere('id_number' , 'like' , "%{$value}%")
+                ->orWhere('phone_number' , 'like' , "%{$value}%");
+    }
 }

@@ -52,6 +52,14 @@ body{
 .gap-md{
     gap: 3.2rem;
 }
+
+.flex{
+    display: flex;
+}
+
+.justify-center{
+    justify-content: center;
+}
 .h-screen{
     height: 100vh;
 }
@@ -68,6 +76,9 @@ body{
     color: #081c15;
 }
 
+.margin-top-sm{
+    margin-top: 1.8rem;
+}
 aside{
     position: relative;
     background-color: #081c15;
@@ -119,7 +130,7 @@ aside{
 .nav-link:visited{
     text-decoration: none;
     color: #fff;
-    font-weight: 400;
+    font-weight: 600;
     transition: all 0.5s;
 }
 
@@ -198,5 +209,105 @@ aside{
 .card-title-heading{
     font-size: 1.6rem;
 }
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+}
+table, th, td{
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 1.2rem;
+    text-align: left;
+    font-size: 1.8rem;
+}
+
+th {
+    background-color: #74c69d;
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+tr:nth-child(even) {
+    background-color: #e8eceb;
+}
+
+
+.pagination-container{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.per-page-label{
+    display: block;
+    margin-bottom: 1.2rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+}
+
+.per-page{
+    padding: 1.6rem;
+    border: 1px solid #74c69d;
+    outline: #40916c;
+    max-width: 100%;
+
+}
+
+.data-tbl-heading{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.6rem;
+}
+
+.data-tbl-heading input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background:none;
+    outline: none;
+    border: none;
+    font-size: 1.8rem;
+}
+
+.search-input-container{
+    display: flex;
+    align-items: center;
+    background-color: rgba(122, 121, 121 , 0.1);
+    width: 30%;
+    border-radius: 9px;
+    padding: 2rem;
+
+}
+
+.search-icon{
+    font-size: 2rem;
+    color: #555;
+}
+
+.chev-down-icon{
+    text-align: center;
+}
+
+.nav--link--inner{
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+    justify-content: space-between
+}
+
+.nav--link--inner-content{
+    display: flex;
+    align-items: center;
+    gap: 1.2rem
+}
+
+
 
 

@@ -10,6 +10,8 @@
         "autoprefixer": "^10.4.20",
         "axios": "^1.7.4",
         "bootstrap": "^5.2.3",
+        "jquery": "^3.7.1",
+        "laravel-datatables-vite": "^0.5.2",
         "laravel-vite-plugin": "^1.0",
         "postcss": "^8.4.45",
         "sass": "^1.56.1",

@@ -1,8 +1,8 @@
 import './bootstrap';
 import 'flowbite';
+import 'laravel-datatables-vite';
+import jQuery from 'jquery';
+window.$ = jQuery;
 
-
-import './../../vendor/power-components/livewire-powergrid/dist/powergrid'
-import './../../vendor/power-components/livewire-powergrid/dist/tailwind.css'
 
 
