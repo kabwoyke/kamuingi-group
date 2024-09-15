@@ -1,0 +1,51 @@
+.edit-form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.4rem;
+}
+
+.input{
+
+    padding: 1.6rem;
+    height: 4.8rem;
+    font-size: 2rem;
+    outline: #40916c;
+    border: 2px solid #40916c;
+}
+
+
+label{
+    font-size: 1.8rem;
+    font-weight: 500;
+}
+
+.btn-submit{
+
+    background: none;
+    padding: 1.6rem 3.2rem;
+    max-width: 100%;
+    cursor: pointer;
+    border: none;
+    background-color: #1b4332;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.8rem;
+    border-radius: 11px;
+    transition: all 0.5s;
+}
+
+.btn-submit:hover{
+    background-color: #40916c;
+}
+
+.select{
+
+    font-size: 1.4rem;
+}

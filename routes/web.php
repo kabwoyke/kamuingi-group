@@ -33,18 +33,16 @@ Route::controller(AuthController::class)->group(function(){
 
 
 Route::controller(AdminController::class)->group(function(){
+    Route::middleware(Authenticate::class)->group(function(){
+        Route::prefix('/admin')->group(function(){
+            Route::get('' ,'render_dashboard_page')->name('dashboard_page');
+            Route::get('deceased/add' ,'render_deceased_form')->name('deceased_form');
+            Route::get('members/deceased/add/{id}' , 'mark_deceased')->name('mark_deceased');
+            Route::get('members/edit/{id}' , 'render_update_form')->name('update_form');
 
-    Route::prefix('/admin')->group(function(){
+        });
+    });
 
-        Route::get('' ,'render_dashboard_page')->name('dashboard_page');
-
-    })->middleware(Authenticate::class);
 });
 
 
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -6,125 +6,70 @@
 
 @section('content')
 
-<div class="grid h-screen grid--2--cols">
 
-    <aside class="align-v padding-sm">
-        <div class="logo-box">
-            <span class="logo-text">Kamuingi Group.</span>
+<x-admin-layout>
+    <div class="header-text">
+        <div class="heading">
+            <h1 class="heading-primary">Hello , {{Auth()->user()->first_name}}</h1>
+            <span class="sub-heading">Track members and donations</span>
         </div>
 
-        <nav class="main-nav">
+        <span class="date-text">
+            <ion-icon name="calendar-outline"></ion-icon>
+            {{date("d/m/Y")}}
+        </span>
+    </div>
 
-            <ul class="nav-list">
-                <li><a href="" class="nav-link">
-                    <ion-icon name="home-outline"></ion-icon>
-                    Home
-                </a></li>
-                <li>
-                <a href="" class="nav-link">
-                    <span class="nav--link--inner">
-                        <div class="nav--link--inner-content">
-                            <ion-icon name="people-outline"></ion-icon>
-                            Members
-                        </div>
-
-                        <ion-icon  name="chevron-down-outline"></ion-icon>
-                    </span>
-
-
-                </a>
-            </li>
-                <li>
-
-                    <a href="" class="nav-link">
-                        <span class="nav--link--inner">
-                            <div class="nav--link--inner-content">
-                                <ion-icon name="cash-outline"></ion-icon>
-                                Donation
-                            </div>
-                        </span>
-
-                </a></li>
-                <div class="bottom-links">
-                    <li >
-                        <a href="" class="nav-link">
-                            <ion-icon name="information-outline"></ion-icon>
-                        Help & information
-                    </a></li>
-
-                    <li >
-                        <a href="{{route('logout')}}" class="nav-link">
-                            <ion-icon name="log-out-outline"></ion-icon>
-                        Log Out
-                    </a></li>
-
+    <div class="dashboard-cards">
+        <div class="grid grid--3--cols gap-md">
+            <a href="" class="admin-card member-card">
+                <div class="icon-box">
+                    <ion-icon class="icon member-icon" name="people-outline"></ion-icon>
                 </div>
+                <h3 class="card-title-heading">
+                    Members
+                    <span class="number-count">{{$members_count}}</span>
+                </h3>
 
+            </a>
 
-            </ul>
-        </nav>
-    </aside>
+            <a href="" class="admin-card deceased-card text-dark">
+                <div class="icon-box">
+                    <ion-icon class="icon" name="sad-outline"></ion-icon>
+                </div>
+                <h3 class="card-title-heading">
+                    Deceased
+                    <span class="number-count">13</span>
+                </h3>
+            </a>
 
-    <main class="padding-sm">
-        <div class="header-text">
-            <div class="heading">
-                <h1 class="heading-primary">Hello , {{Auth()->user()->first_name}}</h1>
-                <span class="sub-heading">Track members and donations</span>
-            </div>
-
-            <span class="date-text">
-                <ion-icon name="calendar-outline"></ion-icon>
-                {{date("d/m/Y")}}
-            </span>
+            <a href="" class="admin-card text-dark">
+                <div class="icon-box">
+                    <ion-icon class="icon" name="people-outline"></ion-icon>
+                </div>
+                <h3 class="card-title-heading">
+                    Members
+                    <span class="number-count">13</span>
+                </h3>
+            </a>
         </div>
+    </div>
 
-        <div class="dashboard-cards">
-            <div class="grid grid--3--cols gap-md">
-                <a href="" class="admin-card member-card">
-                    <div class="icon-box">
-                        <ion-icon class="icon member-icon" name="people-outline"></ion-icon>
-                    </div>
-                    <h3 class="card-title-heading">
-                        Members
-                        <span class="number-count">13</span>
-                    </h3>
+    <livewire:member-data-table/>
 
-                </a>
-
-                <a href="" class="admin-card deceased-card text-dark">
-                    <div class="icon-box">
-                        <ion-icon class="icon" name="sad-outline"></ion-icon>
-                    </div>
-                    <h3 class="card-title-heading">
-                        Deceased
-                        <span class="number-count">13</span>
-                    </h3>
-                </a>
-
-                <a href="" class="admin-card text-dark">
-                    <div class="icon-box">
-                        <ion-icon class="icon" name="people-outline"></ion-icon>
-                    </div>
-                    <h3 class="card-title-heading">
-                        Members
-                        <span class="number-count">13</span>
-                    </h3>
-                </a>
-            </div>
-        </div>
-
-       <livewire:member-data-table/>
-    </main>
-</div>
+</x-admin-layout>
 
 
 
 @push('scripts')
+
  @vite(['resources/js/app.js'])
 @endpush
 
 @push('styles')
+
 @vite('resources/css/dashboard.css')
+
 @endpush
 
 @endsection

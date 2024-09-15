@@ -16,6 +16,7 @@
             <th>Phone Number</th>
             <th>Status</th>
             <th>Total Missed Donations</th>
+            <th>Action</th>
         </thead>
 
         <tbody>
@@ -26,8 +27,28 @@
                 <td>{{$member->last_name}}</td>
                 <td>{{$member->id_number}}</td>
                 <td>{{$member->phone_number}}</td>
-                <td>{{$member->status}}</td>
+                <td>
+                    @if ($member->status == 'active')
+
+                    <span class="status-active">{{$member->status}}</span>
+
+                    @elseif ($member->status == 'penalized')
+                        <span class="status-penalized">{{$member->status}}</span>
+
+                        @else
+                        <span class="status-dead">{{$member->status}}</span>
+                    @endif
+
+
+                </td>
                 <td>{{$member->total_missed_donation}}</td>
+
+
+                <td>
+                    <a class="btn btn-primary" href="">View Member</a>
+                    <a type="button" class="btn btn-secondary modal-btn myBtn"   href="{{ route('update_form', ['id'=>$member->id]) }}">Update Member</a>
+                    <a class="btn btn-danger" href="{{route('mark_deceased' , ["id" => $member->id])}}">Mark as Deceased</a>
+                </td>
             </tr>
             @endforeach
 
@@ -49,7 +70,17 @@
 
     </div>
 
-    @push('styles')
-    @vite('resources/css/dashboard.css')
-    @endpush
+
+
 </div>
+
+
+
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
