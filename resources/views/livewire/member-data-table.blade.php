@@ -1,10 +1,22 @@
 <div>
     <div class="data-tbl-heading">
         <h1 class="heading-primary margin-top-sm">Members List</h1>
+
+        <div>
+            <select wire:model="filter_by" class="filter-member">
+                <option value="" disabled selected hidden>-- Filter By</option>
+                <option value="all">All</option>
+                <option value="dead">Deceased</option>
+                <option value="penalized">Penalized</option>
+            </select>
+        </div>
+
         <div class="search-input-container">
             <input wire:model.live="search" type="search" placeholder="Search Member">
             <ion-icon class="search-icon" name="search-outline"></ion-icon>
         </div>
+
+
 
     </div>
 
@@ -47,7 +59,13 @@
                 <td>
                     <a class="btn btn-primary" href="">View Member</a>
                     <a type="button" class="btn btn-secondary modal-btn myBtn"   href="{{ route('update_form', ['id'=>$member->id]) }}">Update Member</a>
+                    @if ($member->status == 'dead')
+                    <a href="#"  class="btn btn-danger" >Mark as Deceased</a>
+
+                    @else
                     <a class="btn btn-danger" href="{{route('mark_deceased' , ["id" => $member->id])}}">Mark as Deceased</a>
+                    @endif
+
                 </td>
             </tr>
             @endforeach
@@ -76,11 +94,5 @@
 
 
 
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Some text in the Modal..</p>
-  </div>
 
-</div>
 

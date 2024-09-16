@@ -13,10 +13,11 @@ class MemberDataTable extends Component
 
     public $members_per_page = 5;
     public $search = '';
+    public $filter_by = '';
 
     public function render()
     {
-        $members = Member::search($this->search)->paginate($this->members_per_page);
+        $members = Member::search($this->search)->filter($this->filter_by)->paginate($this->members_per_page);
         return view('livewire.member-data-table' , ['members' => $members]);
     }
 }

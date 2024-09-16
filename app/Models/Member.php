@@ -23,4 +23,17 @@ class Member extends Model
                 ->orWhere('id_number' , 'like' , "%{$value}%")
                 ->orWhere('phone_number' , 'like' , "%{$value}%");
     }
+
+    public function scopeActive($query){
+        $query->where('status' , '=' ,"active")
+              ->orwhere('status' , '=' , "penalized");
+    }
+
+    public function scopeFilter($query , $filterBy){
+        if($filterBy == 'all'){
+            $query->get();
+        }
+
+
+    }
 }

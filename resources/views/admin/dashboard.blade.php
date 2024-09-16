@@ -45,11 +45,11 @@
 
             <a href="" class="admin-card text-dark">
                 <div class="icon-box">
-                    <ion-icon class="icon" name="people-outline"></ion-icon>
+                    <ion-icon class="icon" name="cash-outline"></ion-icon>
                 </div>
                 <h3 class="card-title-heading">
-                    Members
-                    <span class="number-count">13</span>
+                    Donations
+                    <span class="number-count">Ksh 0</span>
                 </h3>
             </a>
         </div>

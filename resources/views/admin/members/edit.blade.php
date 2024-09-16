@@ -9,7 +9,7 @@
    <div class="edit-form-container">
     <h1 class="heading-primary">Update Member</h1>
 
-    <form action="{{ route('update', ['id'=>$member->id]) }}" method="post" >
+    <form action="{{ route('update', ['id'=>$member->id]) }}" method="POST" >
         @csrf
         @method('PATCH')
         <div class="form-group">
@@ -35,19 +35,21 @@
         <div class="form-group">
             <label for="status">Status</label>
             <select class="input select" name="status" id="status">
-                <option value="active">ACTIVE</option>
-                <option value="penalized">PENALIZED</option>
-                <option value="dead">DEAD</option>
+                @foreach ($status as $st)
+                <option value="{{$st}}" {{$st == $member->status ? 'selected' : ''}}>{{$st}}</option>
+
+                @endforeach
+
             </select>
         </div>
 
         <div class="form-group">
             <label for="missed">Total Missed Donation</label>
-            <input value="{{$member->total_missed_donation}}" class="input" type="number" placeholder="Total Missed Donation">
+            <input value="{{$member->total_missed_donation}}" name="total_missed_donation" class="input" type="number" placeholder="Total Missed Donation">
         </div>
 
 
-        <button class="btn-submit">Update</button>
+        <button class="btn-submit" type="submit">Update</button>
     </form>
    </div>
 </x-admin-layout>

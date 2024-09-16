@@ -36,10 +36,11 @@ Route::controller(AdminController::class)->group(function(){
     Route::middleware(Authenticate::class)->group(function(){
         Route::prefix('/admin')->group(function(){
             Route::get('' ,'render_dashboard_page')->name('dashboard_page');
-            Route::get('deceased/add' ,'render_deceased_form')->name('deceased_form');
+            Route::get('deceased/add/{id}' ,'render_deceased_form')->name('deceased_form');
             Route::get('members/deceased/add/{id}' , 'mark_deceased')->name('mark_deceased');
             Route::get('members/edit/{id}' , 'render_update_form')->name('update_form');
-
+            Route::patch('members/update/{id}' , 'update')->name('update');
+            Route::post('members/deceased/add/{id}' , 'add_deceased')->name('add_deceased');
         });
     });
 
