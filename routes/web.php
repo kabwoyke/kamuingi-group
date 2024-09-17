@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DonationController;
 use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,11 @@ Route::controller(AdminController::class)->group(function(){
             Route::get('members/edit/{id}' , 'render_update_form')->name('update_form');
             Route::patch('members/update/{id}' , 'update')->name('update');
             Route::post('members/deceased/add/{id}' , 'add_deceased')->name('add_deceased');
+            Route::controller(DonationController::class)->group(function(){
+                Route::get('donations' ,'render_donations_page')->name('donation_page');
+                Route::get('donations/new/{id}' ,'render_donation_form')->name('donation_form');
+            });
+
         });
     });
 

@@ -1,18 +1,19 @@
 <div>
-    <div class="data-tbl-heading">
-        <h1 class="heading-primary margin-top-sm">Members List</h1>
 
-        <div>
-            <select wire:model.live="filter_by" class="filter-member">
+    <div class="data-tbl-heading">
+        <h1 class="heading-primary margin-top-sm">Ongoing Donations</h1>
+
+        {{-- <div>
+            <select  class="filter-member">
                 <option value="" disabled selected hidden>-- Filter By</option>
                 <option value="all">All</option>
                 <option value="dead">Deceased</option>
                 <option value="penalized">Penalized</option>
             </select>
-        </div>
+        </div> --}}
 
         <div class="search-input-container">
-            <input wire:model.live="search" type="search" placeholder="Search Member">
+            <input wire:model.live="search" type="search" placeholder="Search By ID Number">
             <ion-icon class="search-icon" name="search-outline"></ion-icon>
         </div>
 
@@ -21,25 +22,25 @@
     </div>
 
     <table class="members">
-        <thead>
+        <thead >
             <th>First Name</th>
             <th>Last Name</th>
             <th>ID Number</th>
-            <th>Phone Number</th>
-            <th>Status</th>
-            <th>Total Missed Donations</th>
-            <th>Action</th>
+            <th>Death Date</th>
+            <th>Deadline Date</th>
+            <th>Actions</th>
         </thead>
 
         <tbody>
 
-            @foreach ($members as $member)
+            @foreach ($donations as $donation)
             <tr>
-                <td>{{$member->first_name}}</td>
-                <td>{{$member->last_name}}</td>
-                <td>{{$member->id_number}}</td>
-                <td>{{$member->phone_number}}</td>
-                <td>
+                <td>{{$donation->first_name}}</td>
+                <td>{{$donation->last_name}}</td>
+                <td>{{$donation->id_number}}</td>
+                <td>{{$donation->death_date}}</td>
+                <td>{{$donation->deadline_date}}</td>
+                {{-- <td>
                     @if ($member->status == 'active')
 
                     <span class="status-active">{{$member->status}}</span>
@@ -52,19 +53,14 @@
                     @endif
 
 
-                </td>
-                <td>{{$member->total_missed_donation}}</td>
+                </td> --}}
 
 
                 <td>
-                    <a class="btn btn-primary" href="">View Member</a>
-                    <a type="button" class="btn btn-secondary modal-btn myBtn"   href="{{ route('update_form', ['id'=>$member->id]) }}">Update Member</a>
-                    @if ($member->status == 'dead')
-                    <a href="#"  class="btn btn-danger" >Mark as Deceased</a>
-
-                    @else
-                    <a class="btn btn-danger" href="{{route('mark_deceased' , ["id" => $member->id])}}">Mark as Deceased</a>
-                    @endif
+                    <a class="btn btn-primary" href="{{route('donation_form' , ['id' => $donation->id])}}">Donate</a>
+                    {{-- <a type="button" class="btn btn-primary">Update Member</a> --}}
+                    {{-- <a href="#"  class="btn btn-danger" >Mark as Deceased</a> --}}
+                    {{-- <a class="btn btn-danger">Mark as Deceased</a> --}}
 
                 </td>
             </tr>
@@ -75,7 +71,7 @@
     <div class="pagination-container">
         <div>
         <label for="perPage" class="per-page-label">Total per page</label>
-        <select wire:model.live="members_per_page" name="perPage" id="perPage" class="per-page">
+        <select wire:model.live="perPage" name="perPage" id="perPage" class="per-page">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="20">20</option>
@@ -84,13 +80,14 @@
     </div>
 
 
-    {{$members->links('vendor.livewire.simple')}}
+    {{-- {{$members->links('vendor.livewire.simple')}} --}}
 
     </div>
 
 
 
 </div>
+
 
 
 

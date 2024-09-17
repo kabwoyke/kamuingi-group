@@ -16,4 +16,8 @@ class Deceased extends Model
         'death_date',
         'deadline_date'
     ];
+
+    public function member(){
+        return $this->belongsTo(Member::class);
+    }
 }

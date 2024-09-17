@@ -48,7 +48,7 @@
             </li>
                 <li>
 
-                    <a href="" class="nav-link">
+                    <a href="{{route('donation_page')}}" class="nav-link">
                         <span class="nav--link--inner">
                             <div class="nav--link--inner-content">
                                 <ion-icon name="cash-outline"></ion-icon>

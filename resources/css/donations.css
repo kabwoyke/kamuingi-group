@@ -1,8 +1,18 @@
-.edit-form-container{
+img{
+    max-width: 50%;
+}
+.section-form{
+    height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
+}
 
+.form-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4.8rem;
 }
 
 .form-group{
@@ -29,7 +39,6 @@ label{
 }
 
 .btn-submit{
-
     background: none;
     padding: 1.6rem 3.2rem;
     max-width: 100%;
@@ -41,16 +50,11 @@ label{
     font-size: 1.8rem;
     border-radius: 11px;
     transition: all 0.5s;
+
 }
+
 
 .btn-submit:hover{
-    background-color: #40916c;
+background-color: #40916c;
 }
-
-.select{
-
-    font-size: 1.6rem;
-    height: 6.2rem;
-}
-
 

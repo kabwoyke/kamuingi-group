@@ -9,6 +9,7 @@ class Member extends Model
 {
     use HasFactory;
 
+
     protected $fillable = [
         'first_name',
         'last_name',
@@ -17,6 +18,11 @@ class Member extends Model
         'status',
         'total_missed_donation'
     ];
+
+    public function deceased(){
+
+        return $this->hasMany(Deceased::class);
+    }
 
     public function scopeSearch($query , $value){
         $query->where('first_name' , 'like' ,"%{$value}%")
@@ -32,8 +38,12 @@ class Member extends Model
     public function scopeFilter($query , $filterBy){
         if($filterBy == 'all'){
             $query->get();
+        }else if($filterBy == 'dead'){
+            $query->where('status' , '=' ,"dead");
+        }else if($filterBy == 'penalized'){
+            $query->where('status' , '=' ,"penalized");
+        }else{
+            $query->get();
         }
-
-
     }
 }
