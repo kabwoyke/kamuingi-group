@@ -1,66 +1,103 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Kamuingi Self Help Group System
 
-## About Laravel
+Kamuingi Self Help Group is a community-driven platform designed to help members manage contributions and support each other in times of need. The system enables family members to record donations made after a member has passed away, track donation history, and impose penalties for members who fail to contribute.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Member Registration and Management**: 
+  - Register members and manage their personal details.
+  - Track donation records and contribution history.
+  
+- **Donations and Penalties**:
+  - Family members can log in and record donations after a member has passed away.
+  - Automatic tracking of member donations, with penalties imposed after failing to donate three times.
+  
+- **Event Notifications**:
+  - Notify members of donation events, including those for funerals and other needs.
+  
+- **Report Generation**:
+  - Generate reports on member contributions, penalties, and outstanding balances.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## System Architecture
 
-## Learning Laravel
+The system is built with the following key technologies:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- **Backend**: 
+  - Powered by Laravel, the backend handles user management, event logging, and communication between different system modules.
+  
+- **Database**:
+  - Utilizes MySQL for storing member data, donation history, and penalties.
+  
+- **Frontend**:
+  - The frontend is designed using Blade templates, offering a clean and intuitive interface for members to interact with the system.
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Getting Started
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+To get started with setting up the Kamuingi Self Help Group system, follow these steps:
 
-## Laravel Sponsors
+### Prerequisites
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- PHP 8.0+
+- Composer
+- MySQL
 
-### Premium Partners
+### Installation
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. Clone the repository:
+    \`\`\`bash
+    git clone https://github.com/kabwoyke/kamuingi-group.git
+    \`\`\`
+   
+2. Navigate to the project directory:
+    \`\`\`bash
+    cd kamuingi-self-help
+    \`\`\`
+   
+3. Install dependencies:
+    \`\`\`bash
+    composer install
+    \`\`\`
 
-## Contributing
+4. Copy the `.env` file and set up your environment variables:
+    \`\`\`bash
+    cp .env.example .env
+    \`\`\`
+    Update the following environment variables:
+    \`\`\`
+    DB_DATABASE=kamuingi_db
+    DB_USERNAME=your_db_username
+    DB_PASSWORD=your_db_password
+    \`\`\`
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+5. Generate the application key:
+    \`\`\`bash
+    php artisan key:generate
+    \`\`\`
 
-## Code of Conduct
+6. Run the database migrations and seeders:
+    \`\`\`bash
+    php artisan migrate --seed
+    \`\`\`
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+7. Serve the application:
+    \`\`\`bash
+    php artisan serve
+    \`\`\`
 
-## Security Vulnerabilities
+    Your system should now be accessible at `http://localhost:8000`.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Usage
+
+- **Register Members**: Admins can register new members and update their information.
+- **Record Donations**: After a death, designated family members can log into the system and record donations.
+- **View Penalties**: Admins can track members who have failed to contribute and view automatically applied penalties.
+- **Generate Reports**: Generate reports of all donation events and penalties.
+
+## Contribution
+
+We welcome contributions to the Kamuingi Self Help Group system. If you have suggestions or improvements, feel free to open an issue or submit a pull request.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
