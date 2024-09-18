@@ -1,47 +1,118 @@
 @extends('app')
 
-@section('title' , 'Add Donations')
-
+@section('title', 'Add Donations')
 
 @section('content')
 
-<x-admin-layout>
-    <section class="grid section-form grid--2--cols">
+    <x-admin-layout>
+        <section class="grid section-form grid--2--cols">
 
-        <div class="form-container">
-            <form action="">
-                <div class="form-group">
-                    <label for="member">MemberId</label>
-                    <input class="input" type="text"  placeholder="MemberId">
-                </div>
-                <div class="form-group">
-                    <label for="amount">Amount</label>
-                    <input class="input" type="text" placeholder="Amount">
-                </div>
+            <div class="form-container">
+                <form action="{{ route('store_donation' , ['deceasedId'=>$deceasedId])}}" method="POST">
+                    @csrf
+                    <div class="form-group">
+                        <label for="member">MemberId</label>
+                        <input name="memberId" class="input" id="autoComplete" type="text" />
+                        @if (session('invalid_member_number'))
 
-                <div class="form-group">
-                    <label for="date">Date</label>
-                    <input class="input" type="date" placeholder="Date">
-                </div>
+                        <p class="mt-4 text-4xl font-medium text-red">{{session('invalid_member_number')}}</p>
 
-                <div class="form-group">
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="amount">Amount</label>
+                        <input name="amount" class="input" type="text" placeholder="Amount">
+                    </div>
 
-                    <input  type="text" hidden disabled placeholder="deceasedId">
-                </div>
+                    <div class="form-group">
+                        <label for="date">Date</label>
+                        <input name="date" class="input" type="date" placeholder="Date">
+                    </div>
 
-                <button type="submit" class="btn-submit">Add Donation</button>
-            </form>
+                    {{-- <div class="form-group">
+
+                        <input type="text" name="deceacedId" value="{{$deceasedId}}" disabled placeholder="deceasedId">
+                    </div> --}}
+
+                    <button name="deceasedId" type="submit" class="btn-submit">Add Donation</button>
+                </form>
 
 
                 <img src="/Charity.png" alt="">
 
-        </div>
+            </div>
 
-    </section>
-</x-admin-layout>
+        </section>
+    </x-admin-layout>
 
-@push('styles')
+    @push('styles')
+        {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/css/autoComplete.min.css"> --}}
+        @vite('resources/css/donations.css')
+    @endpush
 
-    @vite('resources/css/donations.css')
+    @push('scripts')
+        <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@10.2.7/dist/autoComplete.min.js"></script>
+
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                const autoCompleteJS = new autoComplete({
+                    selector: "#autoComplete",
+                    placeHolder: "Search for a member...",
+                    data: {
+                        src: async (query) => {
+                            try {
+                                const source = await fetch(
+                                    `http://localhost:8000/admin/donations/search/member/${query}`, {
+                                        headers: {
+                                            'Accept': 'application/json',
+                                        },
+                                    });
+
+                                const data = await source.json();
+                                console.log(data);
+                                return data;
+                            } catch (error) {
+                                console.error("Error fetching data:", error);
+                                return [];
+                            }
+                        },
+                        keys: ["id_number", "first_name", "last_name"]
+                    },
+                    resultsList: {
+                        element: (list, data) => {
+                            if (!data.results.length) {
+                                const message = document.createElement("div");
+                                message.setAttribute("class", "no_result");
+                                message.innerHTML = `<span>Found No Results for "${data.query}"</span>`;
+                                list.prepend(message);
+                            }
+                        },
+                        noResults: true,
+                    },
+                    resultItem: {
+                        highlight: true,
+                        element: (item, data) => {
+                            item.innerHTML = `
+                    <div>
+                        <span style="font-weight: bold;">${data.value.id_number}</span> -
+                        ${data.value.first_name} ${data.value.last_name}
+                    </div>
+                `;
+                        }
+                    },
+                    events: {
+                        input: {
+                            selection: (event) => {
+                                const selection = event.detail.selection.value;
+                                autoCompleteJS.input.value = selection.id_number;
+                                // document.getElementById('first_name').value = selection.first_name;
+                                // document.getElementById('last_name').value = selection.last_name;
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
     @endpush
 @endsection

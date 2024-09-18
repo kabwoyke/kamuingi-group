@@ -57,7 +57,7 @@
 
 
                 <td>
-                    <a class="btn btn-primary" href="{{route('donation_form' , ['id' => $donation->id])}}">Donate</a>
+                    <a class="btn btn-primary" href="{{route('donation_form' , ['deceasedId' => $donation->id])}}">Donate</a>
                     {{-- <a type="button" class="btn btn-primary">Update Member</a> --}}
                     {{-- <a href="#"  class="btn btn-danger" >Mark as Deceased</a> --}}
                     {{-- <a class="btn btn-danger">Mark as Deceased</a> --}}

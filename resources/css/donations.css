@@ -58,3 +58,50 @@ label{
 background-color: #40916c;
 }
 
+
+#autoComplete_list_1 {
+    position: absolute;
+    width: 20%;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 0;
+    margin-top: 5px;
+    font-size: 1.8rem;
+}
+
+
+#autoComplete_list_1 li {
+    padding: 10px 15px;
+    cursor: pointer;
+    list-style: none;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+/* Highlighted item */
+#autoComplete_list_1 li[aria-selected="true"] {
+    background-color: #1b4332;
+    color: #fff;
+}
+
+
+/* #autoComplete_list_1 li:hover {
+
+} */
+
+#autoComplete_list_1 li mark {
+    background-color: transparent;
+    color: #1b4332;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+
+#autoComplete_list_1[hidden] {
+    display: none;
+}
+

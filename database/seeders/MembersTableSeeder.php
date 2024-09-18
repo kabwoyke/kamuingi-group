@@ -22,11 +22,18 @@ class MembersTableSeeder extends Seeder
 
         // Seed 10 records
         for ($i = 1; $i <= 10; $i++) {
+            // Generate a unique ID number
+            do {
+                $idNumber = 'ID' . rand(1000, 9999);
+                $exists = DB::table('members')->where('id_number', $idNumber)->exists();
+            } while ($exists);  // Keep generating until it's unique
+
+            // Insert the member with the unique ID number
             DB::table('members')->insert([
                 'first_name' => $firstNames[array_rand($firstNames)],
                 'last_name' => $lastNames[array_rand($lastNames)],
                 'phone_number' => '07' . rand(10000000, 99999999),
-                'id_number' => 'ID' . rand(1000, 9999),
+                'id_number' => $idNumber,  // Use the unique ID number
                 'status' => $statuses[array_rand($statuses)],
                 'total_missed_donation' => rand(0, 3),
                 'created_at' => Carbon::now(),

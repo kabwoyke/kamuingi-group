@@ -12,6 +12,12 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        $middleware->validateCsrfTokens(except:[
+            '/admin/donations/search/member/*'
+        ]);
+        // $middleware->group('web', [
+        //     \Illuminate\Http\Middleware\HandleCors::class
+        // ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
