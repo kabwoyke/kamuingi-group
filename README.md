@@ -45,45 +45,45 @@ To get started with setting up the Kamuingi Self Help Group system, follow these
 ### Installation
 
 1. Clone the repository:
-    \`\`\`bash
+
     git clone https://github.com/kabwoyke/kamuingi-group.git
-    \`\`\`
+
    
 2. Navigate to the project directory:
-    \`\`\`bash
+  
     cd kamuingi-self-help
-    \`\`\`
+    
    
 3. Install dependencies:
-    \`\`\`bash
+
     composer install
-    \`\`\`
+  
 
 4. Copy the `.env` file and set up your environment variables:
-    \`\`\`bash
+
     cp .env.example .env
-    \`\`\`
+
     Update the following environment variables:
-    \`\`\`
+
     DB_DATABASE=kamuingi_db
     DB_USERNAME=your_db_username
     DB_PASSWORD=your_db_password
-    \`\`\`
+ 
 
 5. Generate the application key:
-    \`\`\`bash
+
     php artisan key:generate
-    \`\`\`
+
 
 6. Run the database migrations and seeders:
-    \`\`\`bash
+
     php artisan migrate --seed
-    \`\`\`
+
 
 7. Serve the application:
-    \`\`\`bash
+
     php artisan serve
-    \`\`\`
+
 
     Your system should now be accessible at `http://localhost:8000`.
 
