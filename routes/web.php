@@ -39,6 +39,7 @@ Route::controller(AdminController::class)->group(function(){
             Route::get('' ,'render_dashboard_page')->name('dashboard_page');
             Route::get('deceased/add/{id}' ,'render_deceased_form')->name('deceased_form');
             Route::get('members/deceased/add/{id}' , 'mark_deceased')->name('mark_deceased');
+            Route::get("members/{id}" , 'render_member_details_page')->name('member_details_page');
             Route::get('members/edit/{id}' , 'render_update_form')->name('update_form');
             Route::patch('members/update/{id}' , 'update')->name('update');
             Route::post('members/deceased/add/{id}' , 'add_deceased')->name('add_deceased');
@@ -47,6 +48,7 @@ Route::controller(AdminController::class)->group(function(){
             Route::get('donations' ,'render_donations_page')->name('donation_page');
             Route::post('donations/{deceasedId}' , 'store_donation')->name('store_donation');
             Route::get('donations/new/{deceasedId}' ,'render_donation_form')->name('donation_form');
+            Route::get('donations/progress/{deceasedId}' ,'render_donation_progress')->name('donation_progress_page');
             Route::get('donations/search/member/{query}' ,'search')->name('search_member')->withoutMiddleware(['auth']);
         });
 

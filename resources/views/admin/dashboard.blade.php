@@ -39,7 +39,7 @@
                 </div>
                 <h3 class="card-title-heading">
                     Deceased
-                    <span class="number-count">13</span>
+                    <span class="number-count">{{$deceased_count}}</span>
                 </h3>
             </a>
 

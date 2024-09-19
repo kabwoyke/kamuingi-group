@@ -53,4 +53,15 @@ class DonationController extends Controller
 
 
     }
+
+    public function render_donation_progress($deceasedId){
+        $donations = Donation::where('deceasedId' , $deceasedId)->get();
+        $total = 0;
+
+        foreach($donations as $donation){
+            $total = $total + $donation->amount;
+        }
+        return view('admin.donations.show-donation' , ['deceasedId' => $deceasedId , 'total' => $total]);
+
+    }
 }

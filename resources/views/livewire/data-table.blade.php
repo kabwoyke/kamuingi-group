@@ -1,7 +1,7 @@
 <div>
 
     <div class="data-tbl-heading">
-        <h1 class="heading-primary margin-top-sm">Ongoing Donations</h1>
+        <h1 class="heading-primary margin-top-sm">Donations List</h1>
 
         {{-- <div>
             <select  class="filter-member">
@@ -26,9 +26,9 @@
             <th>First Name</th>
             <th>Last Name</th>
             <th>ID Number</th>
-            <th>Death Date</th>
-            <th>Deadline Date</th>
-            <th>Actions</th>
+            <th>Phone Number</th>
+            <th>Amount</th>
+            {{-- <th>Actions</th> --}}
         </thead>
 
         <tbody>
@@ -38,8 +38,8 @@
                 <td>{{$donation->first_name}}</td>
                 <td>{{$donation->last_name}}</td>
                 <td>{{$donation->id_number}}</td>
-                <td>{{$donation->death_date}}</td>
-                <td>{{$donation->deadline_date}}</td>
+                <td>{{$donation->phone_number}}</td>
+                <td>{{$donation->amount}}</td>
                 {{-- <td>
                     @if ($member->status == 'active')
 
@@ -56,14 +56,12 @@
                 </td> --}}
 
 
-                <td>
+                {{-- <td>
                     <a class="btn btn-primary" href="{{route('donation_form' , ['deceasedId' => $donation->id])}}">Donate</a>
                     <a class="btn btn-secondary" href="{{route('donation_progress_page' , ['deceasedId' => $donation->id])}}">View Progress</a>
-                    {{-- <a type="button" class="btn btn-primary">Update Member</a> --}}
-                    {{-- <a href="#"  class="btn btn-danger" >Mark as Deceased</a> --}}
-                    {{-- <a class="btn btn-danger">Mark as Deceased</a> --}}
 
-                </td>
+
+                </td> --}}
             </tr>
             @endforeach
 
@@ -88,9 +86,3 @@
 
 
 </div>
-
-
-
-
-
-

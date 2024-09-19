@@ -12,7 +12,8 @@ class AdminController extends Controller
     //
     public function render_dashboard_page(){
         $members = Member::all();
-        return view('admin.dashboard' , ['members_count' => count($members)]);
+        $deceased_members = Member::where('status' , 'dead')->get();
+        return view('admin.dashboard' , ['members_count' => count($members) , 'deceased_count' => count($deceased_members)]);
     }
 
     public function render_deceased_form(){
@@ -92,5 +93,10 @@ class AdminController extends Controller
         $member->update($validatedMember);
 
         return redirect("/admin");
+    }
+
+    public function render_member_details_page($id){
+        $member = Member::where('id' , $id)->first();
+        return view('admin.members.show' , ['member' => $member]);
     }
 }

@@ -16,7 +16,8 @@ class Member extends Model
         'phone_number',
         'id_number',
         'status',
-        'total_missed_donation'
+        'total_missed_donation',
+        'gender'
     ];
 
     public function deceased(){

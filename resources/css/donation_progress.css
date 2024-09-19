@@ -1,0 +1,16 @@
+.amount{
+    font-size: 5.2rem;
+    font-weight: 800;
+    color: #1b4332;
+}
+
+.currency{
+    font-size: 1.6rem;
+}
+
+.amount-container
+{
+    text-align: center;
+    padding: 4.4rem;
+    box-shadow: 19px 26px 15px 8px rgba(0,0,0,0.1);
+}

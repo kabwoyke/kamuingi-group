@@ -20,6 +20,10 @@
 
     </div>
 
+    <div class="table-container">
+
+
+
     <table class="members">
         <thead>
             <th>First Name</th>
@@ -27,6 +31,7 @@
             <th>ID Number</th>
             <th>Phone Number</th>
             <th>Status</th>
+            <th>Gender</th>
             <th>Total Missed Donations</th>
             <th>Action</th>
         </thead>
@@ -53,11 +58,12 @@
 
 
                 </td>
+                <td>{{strtolower($member->gender)}}</td>
                 <td>{{$member->total_missed_donation}}</td>
 
 
-                <td>
-                    <a class="btn btn-primary" href="">View Member</a>
+                <td class="actions">
+                    <a class="btn btn-primary" href="{{ route('member_details_page', ['id'=>$member->id]) }}">View Member</a>
                     <a type="button" class="btn btn-secondary modal-btn myBtn"   href="{{ route('update_form', ['id'=>$member->id]) }}">Update Member</a>
                     @if ($member->status == 'dead')
                     <a href="#"  class="btn btn-danger" >Mark as Deceased</a>
@@ -89,6 +95,8 @@
     </div>
 
 
+
+</div>
 
 </div>
 
