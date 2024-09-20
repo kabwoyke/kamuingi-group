@@ -11,8 +11,8 @@
                 <form action="{{ route('store_donation' , ['deceasedId'=>$deceasedId])}}" method="POST">
                     @csrf
                     <div class="form-group">
-                        <label for="member">MemberId</label>
-                        <input name="memberId" class="input" id="autoComplete" type="text" />
+                        <label for="member">Member Number</label>
+                        <input name="member_number" class="input" id="autoComplete" type="text" />
                         @if (session('invalid_member_number'))
 
                         <p class="mt-4 text-4xl font-medium text-red">{{session('invalid_member_number')}}</p>
@@ -77,7 +77,7 @@
                                 return [];
                             }
                         },
-                        keys: ["id_number", "first_name", "last_name"]
+                        keys: ["id_number", "first_name", "last_name" , 'member_number']
                     },
                     resultsList: {
                         element: (list, data) => {
@@ -95,7 +95,7 @@
                         element: (item, data) => {
                             item.innerHTML = `
                     <div>
-                        <span style="font-weight: bold;">${data.value.id_number}</span> -
+                        <span style="font-weight: bold;">${data.value.member_number}</span> -
                         ${data.value.first_name} ${data.value.last_name}
                     </div>
                 `;
@@ -105,7 +105,7 @@
                         input: {
                             selection: (event) => {
                                 const selection = event.detail.selection.value;
-                                autoCompleteJS.input.value = selection.id_number;
+                                autoCompleteJS.input.value = selection.member_number;
                                 // document.getElementById('first_name').value = selection.first_name;
                                 // document.getElementById('last_name').value = selection.last_name;
                             }

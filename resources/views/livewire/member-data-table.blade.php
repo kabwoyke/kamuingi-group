@@ -10,6 +10,11 @@
                 <option value="penalized">Penalized</option>
             </select>
         </div>
+        <a class="icon-link" href="{{ route('export_excel' ) }}">
+            <img class="excel-icon" src="/excel.svg" alt="">
+            Export Excel
+        </a>
+
 
         <div class="search-input-container">
             <input wire:model.live="search" type="search" placeholder="Search Member">
@@ -22,14 +27,12 @@
 
     <div class="table-container">
 
-
-
     <table class="members">
         <thead>
             <th>First Name</th>
             <th>Last Name</th>
             <th>ID Number</th>
-            <th>Phone Number</th>
+            <th>Member Number</th>
             <th>Status</th>
             <th>Gender</th>
             <th>Total Missed Donations</th>
@@ -43,7 +46,7 @@
                 <td>{{$member->first_name}}</td>
                 <td>{{$member->last_name}}</td>
                 <td>{{$member->id_number}}</td>
-                <td>{{$member->phone_number}}</td>
+                <td>{{$member->member_number}}</td>
                 <td>
                     @if ($member->status == 'active')
 
@@ -65,7 +68,7 @@
                 <td class="actions">
                     <a class="btn btn-primary" href="{{ route('member_details_page', ['id'=>$member->id]) }}">View Member</a>
                     <a type="button" class="btn btn-secondary modal-btn myBtn"   href="{{ route('update_form', ['id'=>$member->id]) }}">Update Member</a>
-                    @if ($member->status == 'dead')
+                    @if ($member->status == 'dead' || $member->status == 'penalized' )
                     <a href="#"  class="btn btn-danger" >Mark as Deceased</a>
 
                     @else
@@ -78,7 +81,7 @@
 
         </tbody>
     </table>
-    <div class="pagination-container">
+    <div class="pagination-container align-items">
         <div>
         <label for="perPage" class="per-page-label">Total per page</label>
         <select wire:model.live="members_per_page" name="perPage" id="perPage" class="per-page">
@@ -88,6 +91,8 @@
         <option value="10">50</option>
     </select>
     </div>
+
+
 
 
     {{$members->links('vendor.livewire.simple')}}

@@ -21,7 +21,10 @@
             <label for="last_name">Last Name</label>
             <input class="input" value="{{$member->last_name}}" type="text"  name="last_name" placeholder="Last Name">
         </div>
-
+        <div class="form-group">
+            <label for="last_name">Member Number</label>
+            <input class="input" value="{{$member->member_number}}" type="text" name="member_number" placeholder="Member Number">
+        </div>
         <div class="form-group">
             <label for="last_name">ID Number</label>
             <input class="input" value="{{$member->id_number}}" type="text" name="id_number" placeholder="ID number">
@@ -37,6 +40,17 @@
             <select class="input select" name="status" id="status">
                 @foreach ($status as $st)
                 <option value="{{$st}}" {{$st == $member->status ? 'selected' : ''}}>{{$st}}</option>
+
+                @endforeach
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="input select" name="gender" id="gender">
+                @foreach ($gender as $gen)
+                <option value="{{$gen}}" {{$gen == $member->gender ? 'selected' : ''}}>{{$gen}}</option>
 
                 @endforeach
 

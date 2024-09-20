@@ -25,7 +25,7 @@
         <thead >
             <th>First Name</th>
             <th>Last Name</th>
-            <th>ID Number</th>
+            <th>Member Number</th>
             <th>Phone Number</th>
             <th>Amount</th>
             {{-- <th>Actions</th> --}}
@@ -37,7 +37,7 @@
             <tr>
                 <td>{{$donation->first_name}}</td>
                 <td>{{$donation->last_name}}</td>
-                <td>{{$donation->id_number}}</td>
+                <td>{{$donation->member_number}}</td>
                 <td>{{$donation->phone_number}}</td>
                 <td>{{$donation->amount}}</td>
                 {{-- <td>

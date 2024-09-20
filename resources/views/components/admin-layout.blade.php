@@ -34,7 +34,7 @@
 
                 <div class="dropdown" id="dropdown">
                     <ul class="nav-list-dropdown">
-                        <li style="margin-bottom: 1.2rem;"><a href="" class="nav-link margin-left-4">
+                        <li style="margin-bottom: 1.2rem;"><a href="{{ route('add_member_form') }}" class="nav-link margin-left-4">
                             <ion-icon name="person-add-outline"></ion-icon>
                             Add Member
                         </a>

@@ -17,7 +17,7 @@ class DataTable extends Component
     public function render()
     {
         $donations = DB::table('donations')->join('members', 'members.id', '=', 'donations.memberId')
-        ->select('members.*','members.id as memberId' , 'members.first_name' , 'members.last_name' , 'members.id_number' , 'donations.amount')
+        ->select('members.*','members.id as memberId' , 'members.first_name' , 'members.last_name' , 'members.id_number' , 'donations.amount' , 'members.member_number')
         ->where('deceasedId' , '=' , $this->deceasedId)
         ->Where('id_number' , 'like' , "%{$this->search}%")
         ->paginate($this->perPage);

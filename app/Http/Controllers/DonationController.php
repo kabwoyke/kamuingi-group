@@ -25,6 +25,7 @@ class DonationController extends Controller
         $members = Member::where('id_number', 'like' , "%{$query}%")
         ->orWhere('first_name' , 'like' , "%{$query}%")
         ->orWhere('last_name' , 'like' , "%{$query}%")
+        ->orWhere('member_number' , 'like' , "%{$query}%")
         ->get();
         return response()->json($members);
     }
@@ -33,11 +34,11 @@ class DonationController extends Controller
 
         $validatedDonation = $request->validate([
             'amount' => 'required|integer',
-            'memberId' => 'required|string',
+            'member_number' => 'required|string',
             'date' => 'required|date'
         ]);
 
-        $member = Member::where('id_number' , $validatedDonation['memberId'])->first();
+        $member = Member::where('member_number' , $validatedDonation['member_number'])->first();
 
         if(!$member){
             return redirect()->back()->with('invalid_member_number' , 'The member number is invalid');

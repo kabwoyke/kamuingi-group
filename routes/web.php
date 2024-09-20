@@ -37,6 +37,9 @@ Route::controller(AdminController::class)->group(function(){
     Route::middleware(Authenticate::class)->group(function(){
         Route::prefix('/admin')->group(function(){
             Route::get('' ,'render_dashboard_page')->name('dashboard_page');
+            Route::get('members/add/' , 'render_add_member_form')->name('add_member_form');
+            Route::get('members/export/' , 'export_excel')->name('export_excel');
+            Route::post('members/add/' , 'store_member')->name('store_member');
             Route::get('deceased/add/{id}' ,'render_deceased_form')->name('deceased_form');
             Route::get('members/deceased/add/{id}' , 'mark_deceased')->name('mark_deceased');
             Route::get("members/{id}" , 'render_member_details_page')->name('member_details_page');

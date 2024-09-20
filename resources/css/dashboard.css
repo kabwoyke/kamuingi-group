@@ -364,7 +364,28 @@ tr:nth-child(even) {
 /* .btn-secondary{
 
 } */
-.actions{
+/* .actions{
 
+} */
+.icon-link:link,
+.icon-link:visited{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #2d6a4f;
+    font-weight: 600;
+
+    transition: all 0.5s;
+}
+
+.icon-link:hover,
+.icon-link:active{
+    color: #081c15;
+}
+
+.excel-icon{
+    width: 3.2rem;
+    height: 3.2rem;
 }
 

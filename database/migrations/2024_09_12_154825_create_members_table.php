@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('phone_number')->unique();
             $table->string('id_number')->unique();
+            $table->string('member_number')->unique();
             $table->enum('status' , ['active' , 'penalized' , 'dead'])->default('active');
             $table->enum('gender' , ['MALE' , 'FEMALE'])->default('MALE');
             $table->integer('total_missed_donation')->default(0);
