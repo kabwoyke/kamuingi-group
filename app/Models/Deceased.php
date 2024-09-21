@@ -14,7 +14,8 @@ class Deceased extends Model
     protected $fillable = [
         'memberId',
         'death_date',
-        'deadline_date'
+        'deadline_date',
+        'drive_status'
     ];
 
     public function member(){

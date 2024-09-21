@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('memberId')->references('id')->on('members');
             $table->date('death_date');
             $table->date('deadline_date');
+            $table->enum('drive_status' , ['ongoing' , 'completed'])->default('ongoing');
             $table->timestamps();
         });
     }

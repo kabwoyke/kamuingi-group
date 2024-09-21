@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('deceasedId')->references('id')->on('deceased');
             $table->foreignId('memberId')->references('id')->on('members');
             $table->date('date');
-            $table->enum('status' , ['in_progress' , 'completed' , 'pending' , 'canceled'])->default('in_progress');
+            $table->enum('status' , ['in_progress' , 'completed' , 'pending' , 'canceled'])->default('completed');
             $table->timestamps();
         });
     }

@@ -15,9 +15,11 @@ class DonationDataTable extends Component
     {
         $donations = DB::table('deceased')->join('members', 'members.id', '=', 'deceased.memberId')
         ->select('deceased.*','members.id as memberId' , 'members.first_name' , 'members.last_name' , 'members.id_number')
-        ->where('deadline_date' , '>' , now())
+        ->whereDate('deadline_date' , '>=' , now())
+        ->where('drive_status' , '=' , 'ongoing')
         ->Where('id_number' , 'like' , "%{$this->search}%")
         ->paginate($this->perPage);
+        // dd($donations);
         return view('livewire.donation-data-table',['donations' => $donations]);
     }
 }

@@ -147,7 +147,7 @@ class AdminController extends Controller
     }
 
     public function export_excel() {
-        $members = Member::select('first_name' , 'last_name' , 'member_number' , 'id_number')->get();
+        $members = Member::select('first_name' , 'last_name' , 'member_number' , 'id_number' , 'phone_number')->get();
         $spreadsheet = new Spreadsheet();
         $sheet = $spreadsheet->getActiveSheet();
 
@@ -155,6 +155,7 @@ class AdminController extends Controller
         $sheet->setCellValue('B1', 'Last Name');
         $sheet->setCellValue('C1', 'Member Number');
         $sheet->setCellValue('D1', 'ID Number');
+        $sheet->setCellValue('E1', 'Phone Number');
 
         $headerStyle = [
             'font' => [
@@ -162,12 +163,13 @@ class AdminController extends Controller
             ]
         ];
 
-        $sheet->getStyle('A1:D1')->applyFromArray($headerStyle);
+        $sheet->getStyle('A1:E1')->applyFromArray($headerStyle);
 
         $sheet->getColumnDimension('A')->setWidth(15);
         $sheet->getColumnDimension('B')->setWidth(15);
         $sheet->getColumnDimension('C')->setWidth(18);
-    $sheet->getColumnDimension('D')->setWidth(15);
+        $sheet->getColumnDimension('D')->setWidth(15);
+        $sheet->getColumnDimension('E')->setWidth(15);
 
          $row = 2;
          foreach ($members as $member) {
@@ -175,6 +177,7 @@ class AdminController extends Controller
              $sheet->setCellValue('B' . $row, $member->last_name);
              $sheet->setCellValue('C' . $row, $member->member_number);
              $sheet->setCellValue('D' . $row, $member->id_number);
+             $sheet->setCellValue('E' . $row, $member->phone_number);
              $row++;
          }
 

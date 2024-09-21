@@ -1,3 +1,5 @@
+
+
 <div>
 
     <div class="data-tbl-heading">
@@ -34,6 +36,8 @@
         <tbody>
 
             @foreach ($donations as $donation)
+
+
             <tr>
                 <td>{{$donation->first_name}}</td>
                 <td>{{$donation->last_name}}</td>
@@ -54,11 +58,10 @@
 
 
                 </td> --}}
-
-
                 <td>
                     <a class="btn btn-primary" href="{{route('donation_form' , ['deceasedId' => $donation->id])}}">Donate</a>
                     <a class="btn btn-secondary" href="{{route('donation_progress_page' , ['deceasedId' => $donation->id])}}">View Progress</a>
+                    <a class="btn btn-secondary" href="{{route('donation_progress_page' , ['deceasedId' => $donation->id])}}">Mark As Complete</a>
                     {{-- <a type="button" class="btn btn-primary">Update Member</a> --}}
                     {{-- <a href="#"  class="btn btn-danger" >Mark as Deceased</a> --}}
                     {{-- <a class="btn btn-danger">Mark as Deceased</a> --}}
