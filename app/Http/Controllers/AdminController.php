@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Deceased;
+use App\Models\Donation;
 use App\Models\Member;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -16,7 +18,18 @@ class AdminController extends Controller
     {
         $members = Member::all();
         $deceased_members = Member::where('status', 'dead')->get();
-        return view('admin.dashboard', ['members_count' => count($members), 'deceased_count' => count($deceased_members)]);
+        $total_ongoing_donations_total = 0;
+        $donations = DB::table('donations')->join('deceased', 'deceased.id', '=', 'donations.deceasedId')
+        ->select('deceased.*', 'drive_status' , 'deadline_date' , 'donations.amount')
+        ->whereDate('deadline_date' , '>=' , now())
+        ->where('drive_status' , '=' , 'ongoing')
+        ->get();
+
+        foreach($donations as $donation){
+            $total_ongoing_donations_total = $total_ongoing_donations_total + $donation->amount;
+        }
+        // dd($total_ongoing_donations_total);
+        return view('admin.dashboard', ['members_count' => count($members), 'deceased_count' => count($deceased_members) , 'total_ongoing_donations_total' => $total_ongoing_donations_total]);
     }
 
     public function render_add_member_form()

@@ -49,7 +49,7 @@
                 </div>
                 <h3 class="card-title-heading">
                     Donations
-                    <span class="number-count">Ksh 0</span>
+                    <span class="number-count" >Ksh<span id="donation-total">{{$total_ongoing_donations_total}}</span> </span>
                 </h3>
             </a>
         </div>
@@ -57,6 +57,8 @@
 
     <livewire:member-data-table/>
 
+
+    {{-- <livewire:chart/> --}}
 </x-admin-layout>
 
 
@@ -64,6 +66,7 @@
 @push('scripts')
 
  @vite(['resources/js/app.js'])
+
 @endpush
 
 @push('styles')

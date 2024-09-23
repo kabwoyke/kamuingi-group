@@ -6,6 +6,7 @@
             <select wire:model.live="filter_by" class="filter-member">
                 <option value="" disabled selected hidden>-- Filter By</option>
                 <option value="all">All</option>
+                <option value="active">Active</option>
                 <option value="dead">Deceased</option>
                 <option value="penalized">Penalized</option>
             </select>
@@ -102,6 +103,16 @@
 
 
 </div>
+
+
+{{--
+<section wire:ignore>
+    <canvas id="myChart"></canvas>
+
+@push('scripts')
+@vite(['resources/js/chart.js'])
+@endpush
+</section> --}}
 
 </div>
 

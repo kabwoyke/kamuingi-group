@@ -42,6 +42,8 @@ class Member extends Model
             $query->get();
         }else if($filterBy == 'dead'){
             $query->where('status' , '=' ,"dead");
+        }else if($filterBy == 'active'){
+            $query->where('status' , '=' ,"active");
         }else if($filterBy == 'penalized'){
             $query->where('status' , '=' ,"penalized");
         }else{

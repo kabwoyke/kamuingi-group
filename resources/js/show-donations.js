@@ -1,4 +1,7 @@
     document.addEventListener('DOMContentLoaded', function () {
+
+     
+
         const amountElement = document.querySelector('.amount');
         const finalAmount = parseInt(amountElement.textContent);
         let currentAmount = 0;

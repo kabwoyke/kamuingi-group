@@ -13,6 +13,7 @@ Artisan::command('inspire', function () {
 })->purpose('Display an inspiring quote')->hourly();
 
 Artisan::command('donations:complete' , function(){
+    // Log::debug("Runned");
    $deceasedMembers = Deceased::where('drive_status', 'ongoing')
    ->whereDate('deadline_date', '<', Carbon::now())
    ->get();
@@ -26,4 +27,4 @@ Artisan::command('donations:complete' , function(){
 });
 
 
-Schedule::command('donation:complete' )->daily();
+Schedule::command('donation:complete' )->dailyAt('00:00');
