@@ -1,19 +1,30 @@
 
-<div wire:ignore>
-    <canvas id="myChart"></canvas>
-<h2>gello</h2>
+<div class="grid chart-grid">
+    <div>
+        <canvas id="myChart" width="200" height="200">
+
+        </canvas>
+    </div>
+
+    <div>
+        <canvas id="chart2">
+
+        </canvas>
+    </div>
+
+
 @push('scripts')
 @vite(['resources/js/chart.js'])
 @endpush
-<script>
-    // window.Livewire.hook('component.initialized', (component) => {
-    //     // Runs when the component is initialized
-    //     console.log(component)
-    // });
 
-   
-    // console.log(window);
-</script>
+
+<style>
+    .chart-grid{
+        grid-template-columns: repeat(2,1fr);
+        align-items: center
+    }
+</style>
+
 
 </div>
 

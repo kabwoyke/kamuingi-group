@@ -58,7 +58,7 @@
     <livewire:member-data-table/>
 
 
-    {{-- <livewire:chart/> --}}
+
 </x-admin-layout>
 
 

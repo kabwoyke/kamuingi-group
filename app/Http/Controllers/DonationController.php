@@ -22,10 +22,13 @@ class DonationController extends Controller
     }
 
     public function search($query){
-        $members = Member::where('id_number', 'like' , "%{$query}%")
-        ->orWhere('first_name' , 'like' , "%{$query}%")
-        ->orWhere('last_name' , 'like' , "%{$query}%")
-        ->orWhere('member_number' , 'like' , "%{$query}%")
+        $members = Member::where(function($q) use ($query) {
+            $q->where('id_number', 'like', "%{$query}%")
+                  ->orWhere('first_name', 'like', "%{$query}%")
+                  ->orWhere('last_name', 'like', "%{$query}%")
+                  ->orWhere('member_number', 'like', "%{$query}%");
+        })
+        ->whereNotIn('status', ['penalized', 'dead'])
         ->get();
         return response()->json($members);
     }

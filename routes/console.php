@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Deceased;
+use App\Models\Donation;
+use App\Models\Member;
 use Carbon\Carbon;
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
@@ -18,12 +20,30 @@ Artisan::command('donations:complete' , function(){
    ->whereDate('deadline_date', '<', Carbon::now())
    ->get();
 
+
+
    foreach ($deceasedMembers as $deceased) {
+
+      $donatedMembers = Donation::where('deceasedId', $deceased->id)->pluck('memberId')->toArray();
+
+      $missedMembers = Member::whereNotIn('id', $donatedMembers)
+      ->whereNotIn('status' ,['dead' , 'penalized'])
+      ->get();
+
+
+      foreach ($missedMembers as $member) {
+          $member->total_missed_donation += 1;
+
+          if ($member->total_missed_donation > 3) {
+            $member->status = 'penalized';
+        }
+          $member->save();
+      }
     $deceased->drive_status = 'completed';
     $deceased->save();
 }
 
-    // print_r($deceasedMembers . "\n");
+    print_r($deceasedMembers . "\n");
 });
 
 

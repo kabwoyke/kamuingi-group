@@ -102,8 +102,9 @@
 
 
 
-</div>
 
+</div>
+<livewire:chart/>
 
 {{--
 <section wire:ignore>
