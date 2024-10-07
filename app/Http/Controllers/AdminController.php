@@ -159,6 +159,13 @@ class AdminController extends Controller
         return view('admin.members.show', ['member' => $member]);
     }
 
+    public function delete_member($id)
+    {
+        $member = Member::where('id', $id)->first();
+        $member->delete();
+        return redirect("/admin");
+    }
+
     public function export_excel() {
         $members = Member::select('first_name' , 'last_name' , 'member_number' , 'id_number' , 'phone_number')->get();
         $spreadsheet = new Spreadsheet();

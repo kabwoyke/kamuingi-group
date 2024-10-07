@@ -17,9 +17,9 @@
                 <hr class="gradient-line">
 
                 <div>
-                    <form action="" method="POST" >
+                    <form action="{{ route('delete_member', ['id'=>$member->id]) }}" method="POST" >
                         @csrf
-
+                        @method("DELETE")
                         <div class="grid grid--form--2 form-group-grid">
 
                         <div class="form-group">

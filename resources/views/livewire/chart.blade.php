@@ -1,12 +1,12 @@
 
 <div class="grid chart-grid">
-    <div>
-        <canvas id="myChart" width="200" height="200">
+    <div class="chart-container">
+        <canvas id="myChart">
 
         </canvas>
     </div>
 
-    <div>
+    <div class="chart-container bar-chart">
         <canvas id="chart2">
 
         </canvas>
@@ -22,6 +22,14 @@
     .chart-grid{
         grid-template-columns: repeat(2,1fr);
         align-items: center
+    }
+
+    .chart-container{
+        width: 65%
+    }
+
+    .bar-chart{
+        width:80%;
     }
 </style>
 

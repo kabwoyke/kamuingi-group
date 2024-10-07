@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('donations', function (Blueprint $table) {
             $table->id();
             $table->float('amount');
-            $table->foreignId('deceasedId')->references('id')->on('deceased');
-            $table->foreignId('memberId')->references('id')->on('members');
+            $table->foreignId('deceasedId')->references('id')->on('deceased')->onDelete('CASCADE')->onUpdate('CASCADE');;
+            $table->foreignId('memberId')->references('id')->on('members')->onDelete('CASCADE')->onUpdate('CASCADE');;
             $table->date('date');
             $table->enum('status' , ['in_progress' , 'completed' , 'pending' , 'canceled'])->default('completed');
             $table->timestamps();

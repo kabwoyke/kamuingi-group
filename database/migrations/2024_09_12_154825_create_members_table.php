@@ -21,6 +21,7 @@ return new class extends Migration
             $table->enum('status' , ['active' , 'penalized' , 'dead'])->default('active');
             $table->enum('gender' , ['MALE' , 'FEMALE'])->default('MALE');
             $table->integer('total_missed_donation')->default(0);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

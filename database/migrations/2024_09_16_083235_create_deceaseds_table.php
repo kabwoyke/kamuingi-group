@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('deceased', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('memberId')->references('id')->on('members');
+            $table->foreignId('memberId')->references('id')->on('members')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->date('death_date');
             $table->date('deadline_date');
             $table->enum('drive_status' , ['ongoing' , 'completed'])->default('ongoing');
