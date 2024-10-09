@@ -1,5 +1,4 @@
 
-
 <div>
 
     <div class="data-tbl-heading">
@@ -13,6 +12,15 @@
                 <option value="penalized">Penalized</option>
             </select>
         </div> --}}
+
+        <div>
+            <select wire:model.live="drive_status" class="filter-member">
+                <option value="" disabled selected hidden>-- Filter By</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+                {{-- <option value="penalized">Penalized</option> --}}
+            </select>
+        </div>
 
         <div class="search-input-container">
             <input wire:model.live="search" type="search" placeholder="Search By ID Number">
@@ -30,6 +38,7 @@
             <th>ID Number</th>
             <th>Death Date</th>
             <th>Deadline Date</th>
+            <th>Status</th>
             <th>Actions</th>
         </thead>
 
@@ -44,22 +53,27 @@
                 <td>{{$donation->id_number}}</td>
                 <td>{{$donation->death_date}}</td>
                 <td>{{$donation->deadline_date}}</td>
-                {{-- <td>
-                    @if ($member->status == 'active')
+                <td>
+                    @if ($donation->drive_status == 'ongoing')
 
-                    <span class="status-active">{{$member->status}}</span>
-
-                    @elseif ($member->status == 'penalized')
-                        <span class="status-penalized">{{$member->status}}</span>
+                    <span class="status-active">{{$donation->drive_status}}</span>
 
                         @else
-                        <span class="status-dead">{{$member->status}}</span>
+                        <span class="status-dead">{{$donation->drive_status}}</span>
                     @endif
 
 
-                </td> --}}
+                </td>
                 <td>
-                    <a class="btn btn-primary" href="{{route('donation_form' , ['deceasedId' => $donation->id])}}">Donate</a>
+                    @if ($donation->drive_status == "ongoing")
+                         <a class="btn btn-primary" href="{{route('donation_form' , ['deceasedId' => $donation->id])}}">Donate</a>
+
+                         @else
+
+                         <a class="btn btn-primary" href="#">Donate</a>
+
+                    @endif
+
                     <a class="btn btn-secondary" href="{{route('donation_progress_page' , ['deceasedId' => $donation->id])}}">View Progress</a>
                     <a class="btn btn-secondary" href="{{route('donation_progress_page' , ['deceasedId' => $donation->id])}}">Mark As Complete</a>
                     {{-- <a type="button" class="btn btn-primary">Update Member</a> --}}

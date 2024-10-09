@@ -21,6 +21,11 @@ class DonationController extends Controller
         return view('admin.donations.index');
     }
 
+    public function render_donations_history_page(){
+
+        return view('admin.donations.donation_history');
+    }
+
     public function search($query){
         $members = Member::where(function($q) use ($query) {
             $q->where('id_number', 'like', "%{$query}%")
@@ -45,6 +50,10 @@ class DonationController extends Controller
 
         if(!$member){
             return redirect()->back()->with('invalid_member_number' , 'The member number is invalid');
+        }
+
+        if(Deceased::where('id' , $deceasedId)->first()->drive_status == "completed"){
+            return redirect()->back()->with('invalid_donation' , 'The donation drive is completed');
         }
 
         Donation::create([

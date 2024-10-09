@@ -39,24 +39,50 @@
                             Add Member
                         </a>
                         </li>
-                        <li><a href="" class="flex nav-link margin-left-4" style="align-items: center; gap: 1rem">
+                        <li>
+                            <a href="/admin" class="flex nav-link margin-left-4" style="align-items: center; gap: 1rem">
                             <ion-icon name="list-outline"></ion-icon>
                             List Member
-                        </a></li>
+                        </a>
+                    </li>
                     </ul>
                 </div>
             </li>
                 <li>
 
-                    <a href="{{route('donation_page')}}" class="nav-link">
+
+                    <a href="#" class="nav-link" id="donation_link">
                         <span class="nav--link--inner">
                             <div class="nav--link--inner-content">
                                 <ion-icon name="cash-outline"></ion-icon>
                                 Donation
                             </div>
+
+                            <ion-icon  name="chevron-down-outline"></ion-icon>
                         </span>
 
-                </a></li>
+                </a>
+
+                <div class="donation_dropdown" id="donation-dropdown">
+                    <ul class="nav-list-dropdown">
+
+                        <li>
+                            <a href="{{ route('donation_page') }}" class="flex nav-link margin-left-4" style="align-items: center; gap: 1rem">
+                            <ion-icon name="list-outline"></ion-icon>
+                            List Donations
+                        </a>
+                    </li>
+
+                        <li style="margin-top: 1.2rem;">
+                            <a href="{{ route('donation_history') }}" class="flex nav-link margin-left-4">
+                            <ion-icon name="calendar-outline"></ion-icon>
+                            Donation History
+                        </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
                 <div class="bottom-links">
                     <li >
                         <a href="" class="nav-link">

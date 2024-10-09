@@ -50,6 +50,7 @@ Route::controller(AdminController::class)->group(function(){
 
         Route::controller(DonationController::class)->group(function(){
             Route::get('donations' ,'render_donations_page')->name('donation_page');
+            Route::get('donations/history' , 'render_donations_history_page')->name('donation_history');
             Route::post('donations/{deceasedId}' , 'store_donation')->name('store_donation');
             Route::get('donations/new/{deceasedId}' ,'render_donation_form')->name('donation_form');
             Route::get('donations/progress/{deceasedId}' ,'render_donation_progress')->name('donation_progress_page');

@@ -17,7 +17,10 @@
         <span class="date-text">
             <ion-icon name="calendar-outline"></ion-icon>
             {{date("d/m/Y")}}
+
+            <span id="clock"></span>
         </span>
+
     </div>
 
     <div class="dashboard-cards">
@@ -49,7 +52,7 @@
                 </div>
                 <h3 class="card-title-heading">
                     Donations
-                    <span class="number-count" >Ksh<span id="donation-total">{{$total_ongoing_donations_total}}</span> </span>
+                    <span class="number-count">Ksh<span id="donation-total">{{$total_ongoing_donations_total}}</span> </span>
                 </h3>
             </a>
         </div>

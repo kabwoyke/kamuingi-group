@@ -270,6 +270,12 @@ tr:nth-child(even) {
     position: relative;
 
 }
+
+.donation_dropdown{
+    display: none;
+    position: relative;
+
+}
 .nav-list-dropdown{
     display: flex;
     flex-direction: column;

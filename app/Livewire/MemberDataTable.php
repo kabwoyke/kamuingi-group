@@ -15,6 +15,16 @@ class MemberDataTable extends Component
     public $search = '';
     public $filter_by = '';
 
+    public function updatingFilterBy()
+    {
+        $this->resetPage();
+    }
+    public function updatingSearch()
+    {
+        $this->resetPage(); 
+    }
+
+
     public function render()
     {
         $members = Member::search($this->search)->filter($this->filter_by)->paginate($this->members_per_page);

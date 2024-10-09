@@ -1,0 +1,26 @@
+.grid-columns-2{
+    grid-template-columns: repeat(2 , 1fr);
+    gap: 2.4rem;
+}
+
+label{
+
+    display: block;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.date-range-container{
+    align-items: center;
+}
+.input{
+
+    padding: 1.6rem;
+    height: 4.8rem;
+    font-size: 2rem;
+    outline: none;
+    border: 2px solid #eef0ef;
+    box-shadow: 3px 2px 2px #e1e2e1;
+    border-radius: 9px;
+    width: 100%;
+}

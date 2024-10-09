@@ -5,6 +5,8 @@
 @section('content')
 
     <x-admin-layout>
+
+
         <section class="grid section-form grid--2--cols">
 
             <div class="form-container">
@@ -35,6 +37,12 @@
                     </div> --}}
 
                     <button name="deceasedId" type="submit" class="btn-submit">Add Donation</button>
+
+                    @if (session('invalid_donation'))
+
+                    <p style="color: red; font-size: 18px; font-weight: 500;">{{session('invalid_donation')}}</p>
+
+                    @endif
                 </form>
 
 
