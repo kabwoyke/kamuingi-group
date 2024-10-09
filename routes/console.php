@@ -43,7 +43,7 @@ Artisan::command('donations:complete' , function(){
     $deceased->save();
 }
 
-    print_r($deceasedMembers . "\n");
+    // print_r($deceasedMembers . "\n");
 });
 
 
